@@ -1,0 +1,11 @@
+/target
+*.swp
+*.swo
+.DS_Store
+
+# ACP Forge runtime (not tracked)
+.forge/worktrees/
+.forge/sessions/
+
+# OS
+Thumbs.db

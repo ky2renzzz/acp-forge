@@ -1,0 +1,30 @@
+name = "api-docs"
+version = "0.1.0"
+description = "Generate API documentation for a module"
+roles = ["doc_writer"]
+tags = ["docs", "api", "documentation"]
+
+template = """
+Generate comprehensive API documentation for {{module}}.
+
+Format: {{format}}
+
+Include:
+- Module overview (one paragraph)
+- Each public type/function with:
+  - Signature
+  - Description
+  - Parameters and return values
+  - Example usage
+- Error conditions
+- Thread safety notes (if applicable)
+"""
+
+[params.module]
+description = "Module or file to document"
+required = true
+
+[params.format]
+description = "Documentation format"
+default = "rustdoc"
+required = false

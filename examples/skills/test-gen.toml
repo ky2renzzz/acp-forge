@@ -1,0 +1,28 @@
+name = "test-gen"
+version = "0.1.0"
+description = "Generate unit tests for a function or module"
+roles = ["test_runner", "writer"]
+tags = ["testing", "unit-tests"]
+depends_on = ["code-review"]
+
+template = """
+Write unit tests for {{target}}.
+
+Strategy: {{strategy}}
+
+Requirements:
+- Cover happy path, edge cases, and error paths
+- Use descriptive test names that explain the scenario
+- No test should depend on external state or ordering
+- Each test should assert one logical concept
+- Include property-based tests where appropriate
+"""
+
+[params.target]
+description = "Function or module to test"
+required = true
+
+[params.strategy]
+description = "Testing strategy"
+default = "boundary-value analysis + equivalence partitioning"
+required = false

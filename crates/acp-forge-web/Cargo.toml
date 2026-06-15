@@ -1,0 +1,19 @@
+[package]
+name = "acp-forge-web"
+description = "Real-time web source integration with caching and cross-reference verification"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+acp-forge-core.workspace = true
+tokio.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+reqwest.workspace = true
+chrono.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+sha2.workspace = true
+hex.workspace = true

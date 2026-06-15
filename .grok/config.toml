@@ -1,0 +1,23 @@
+# ACP Forge — Grok Build Configuration
+# Place this at .grok/config.toml in your project root.
+
+[skills]
+# Extra skill directories (in addition to .grok/skills/)
+paths = ["examples/skills"]
+
+[hooks]
+# Run cargo check after any code edit
+on_edit = ["cargo check --quiet"]
+# Run tests after merge
+on_merge = ["cargo test --quiet"]
+
+[subagents]
+# Match Grok Build's max
+max = 8
+default_model = "grok-3"
+
+[subagents.overrides.tests]
+model = "grok-3-mini"
+
+[subagents.overrides.documentation]
+model = "grok-3-mini"

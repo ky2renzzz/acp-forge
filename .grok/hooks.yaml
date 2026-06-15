@@ -1,0 +1,20 @@
+# ACP Forge — Grok Build Lifecycle Hooks
+#
+# These hooks run at specific points in Grok Build's multi-agent pipeline.
+# See: https://docs.x.ai/build/features/hooks
+
+hooks:
+  on_subagent_complete:
+    # Ensure each sub-agent's output compiles
+    - script: cargo check --quiet
+      description: "Verify Rust compilation after sub-agent changes"
+
+  on_merge:
+    # Run full test suite after all sub-agents merge
+    - script: cargo test --quiet
+      description: "Run test suite after merge"
+
+  on_edit:
+    # Quick format check on each edit
+    - script: cargo fmt --check --quiet
+      description: "Check formatting"

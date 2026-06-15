@@ -1,0 +1,58 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/acp-forge-core",
+    "crates/acp-forge-worktree",
+    "crates/acp-forge-graph",
+    "crates/acp-forge-skills",
+    "crates/acp-forge-web",
+    "crates/acp-forge-cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/user/acp-forge"
+rust-version = "1.85"
+
+[workspace.dependencies]
+# Internal crates
+acp-forge-core = { path = "crates/acp-forge-core" }
+acp-forge-worktree = { path = "crates/acp-forge-worktree" }
+acp-forge-graph = { path = "crates/acp-forge-graph" }
+acp-forge-skills = { path = "crates/acp-forge-skills" }
+acp-forge-web = { path = "crates/acp-forge-web" }
+
+# ACP
+agent-client-protocol = "0.14"
+
+# Async
+tokio = { version = "1", features = ["full"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+
+# Utilities
+uuid = { version = "1", features = ["v7", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# CLI
+clap = { version = "4", features = ["derive"] }
+anyhow = "1"
+
+# HTTP
+reqwest = { version = "0.12", features = ["json"] }
+
+# Crypto (for content hashing)
+sha2 = "0.10"
+hex = "0.4"
+
+[profile.release]
+lto = "thin"
+strip = true

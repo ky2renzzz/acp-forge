@@ -1,0 +1,28 @@
+name = "code-review"
+version = "0.1.0"
+description = "Review code for bugs, security issues, and style"
+roles = ["reviewer"]
+tags = ["review", "security", "quality"]
+
+template = """
+Review the following file for {{focus}}.
+
+File: {{file}}
+
+Checklist:
+- Correctness: logic errors, off-by-one, null/None handling
+- Security: injection, auth bypass, secrets in code
+- Performance: unnecessary allocations, N+1 queries, blocking in async
+- Style: naming, dead code, overly complex expressions
+
+Be specific. Reference line numbers. Suggest fixes.
+"""
+
+[params.file]
+description = "Path to the file to review"
+required = true
+
+[params.focus]
+description = "What to focus on"
+default = "correctness, security, and performance"
+required = false
